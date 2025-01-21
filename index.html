@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gépjármű Átvételi Lap</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 100%;
+            margin: 0 10px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="date"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .checkbox-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .checkbox-group label {
+            font-weight: normal;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .section {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .section h3 {
+            margin-top: 0;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .footer input[type="text"] {
+            width: 40%;
+            display: inline-block;
+        }
+        .signatures {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .print-button {
+            margin-top: 20px;
+            text-align: center;
+        }
+        button {
+            padding: 12px 20px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        @media (max-width: 768px) {
+            .signatures {
+                flex-direction: column;
+                gap: 15px;
+            }
+            input[type="text"], input[type="date"] {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gépjármű Átvételi Lap</h1>
+
+        <!-- Fejléc -->
+        <div class="form-group">
+            <label for="license-plate">Gépjármű rendszáma:</label>
+            <input type="text" id="license-plate" name="license-plate" placeholder="Adja meg a rendszámot">
+        </div>
+        <div class="form-group">
+            <label for="driver-name">Gépjárművezető neve:</label>
+            <input type="text" id="driver-name" name="driver-name" placeholder="Adja meg a vezető nevét">
+        </div>
+
+        <!-- Külső tisztaság -->
+        <div class="section">
+            <h3>Külső tisztaság</h3>
+            <div class="checkbox-group">
+                <label><input type="radio" name="external-cleanliness" value="clean"> Tiszta</label>
+                <label><input type="radio" name="external-cleanliness" value="dirty"> Szennyezett</label>
+            </div>
+        </div>
+
+        <!-- Belső tisztaság -->
+        <div class="section">
+            <h3>Belső tisztaság</h3>
+            <div class="checkbox-group">
+                <label><input type="radio" name="internal-cleanliness" value="clean"> Tiszta</label>
+                <label><input type="radio" name="internal-cleanliness" value="dirty"> Szennyezett</label>
+            </div>
+        </div>
+
+        <!-- Ülés állapota -->
+        <div class="section">
+            <h3>Ülés állapota</h3>
+            <div class="checkbox-group">
+                <label><input type="radio" name="seat-condition" value="clean"> Tiszta</label>
+                <label><input type="radio" name="seat-condition" value="burnt"> Kiégetett</label>
+                <label><input type="radio" name="seat-condition" value="torn"> Szakadt</label>
+            </div>
+        </div>
+
+        <!-- Raktér tisztaság -->
+        <div class="section">
+            <h3>Raktér tisztaság</h3>
+            <div class="checkbox-group">
+                <label><input type="radio" name="cargo-cleanliness" value="clean"> Tiszta</label>
+                <label><input type="radio" name="cargo-cleanliness" value="dirty"> Szennyezett</label>
+            </div>
+        </div>
+
+        <!-- Műszerfal hiba -->
+        <div class="section">
+            <h3>Műszerfal hiba</h3>
+            <div class="checkbox-group">
+                <label><input type="radio" name="dashboard-error" value="yes"> Igen</label>
+                <label><input type="radio" name="dashboard-error" value="no"> Nem</label>
+            </div>
+            <label for="dashboard-error-description">Hiba leírása:</label>
+            <input type="text" id="dashboard-error-description" name="dashboard-error-description" placeholder="Hiba leírása (ha van)">
+        </div>
+
+        <!-- Gumiabroncsok -->
+        <div class="section">
+            <h3>Gumiabroncsok állapota</h3>
+            <div class="checkbox-group">
+                <label><input type="radio" name="tire-condition" value="good"> Megfelelő</label>
+                <label><input type="radio" name="tire-condition" value="bad"> Hibás</label>
+            </div>
+        </div>
+
+        <!-- Matrica állapota -->
+        <div class="section">
+            <h3>Matrica állapota</h3>
+            <div class="checkbox-group">
+                <label><input type="radio" name="sticker-condition" value="good"> Megfelelő</label>
+                <label><input type="radio" name="sticker-condition" value="bad"> Hibás</label>
+                <label><input type="radio" name="sticker-condition" value="replace"> Szükséges csere</label>
+            </div>
+        </div>
+
+        <!-- Aláírás és dátum -->
+        <div class="signatures">
+            <div>
+                <label for="receiver-name">Átvevő neve:</label>
+                <input type="text" id="receiver-name" name="receiver-name" placeholder="Átvevő neve">
+            </div>
+            <div>
+                <label for="date">Dátum:</label>
+                <input type="date" id="date" name="date">
+            </div>
+            <div>
+                <label for="signature">Gépjárművezető aláírása:</label>
+                <input type="text" id="signature" name="signature" placeholder="Aláírás">
+            </div>
+        </div>
+
+        <!-- Nyomtatás gomb -->
+        <div class="print-button">
+            <button onclick="window.print()">Nyomtatás</button>
+        </div>
+    </div>
+</body>
+</html>
